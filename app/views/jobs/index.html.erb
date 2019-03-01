@@ -1,0 +1,19 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>职位名称</th>
+      <th>工作内容</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.description %></td>
+        <td><%= link_to "编辑", edit_job_path(job) %></td>
+        <td><%= link_to "删除", job_path(job), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
