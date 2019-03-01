@@ -4,6 +4,10 @@ class JobsController < ApplicationController
     @jobs = Job.find_each(batch_size: 100)
   end
 
+  def show
+    @job = Job.find params[:id]
+  end
+
   def new
     @job = Job.new
   end
