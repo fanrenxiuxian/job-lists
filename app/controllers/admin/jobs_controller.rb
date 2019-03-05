@@ -1,4 +1,6 @@
 class Admin::JobsController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :show]
+  before_action :require_is_admin
 
   def index
     @jobs = Job.all
@@ -42,6 +44,14 @@ class Admin::JobsController < ApplicationController
     redirect_to admin_jobs_path
     flash[:alert] = "已删除这个招聘信息"
   end
+
+  def require_is_admin
+    if !current_user.admin?
+      redirect_to jobs_path
+      flash[:alert] = "您不是管理员，不能进入。"
+    end
+  end
+
 
   private
   def job_params
