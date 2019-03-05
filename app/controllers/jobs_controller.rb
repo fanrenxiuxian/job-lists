@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.find_each(batch_size: 100)
+    @jobs = Job.where(is_hidden: false)
   end
 
   def show
@@ -47,6 +47,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :is_hidden)
   end
 end
