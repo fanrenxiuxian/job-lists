@@ -1,5 +1,5 @@
 class Admin::JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :show]
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy, :show, :publish, :hide]
   before_action :require_is_admin
 
   def index
@@ -50,6 +50,18 @@ class Admin::JobsController < ApplicationController
       redirect_to jobs_path
       flash[:alert] = "您不是管理员，不能进入。"
     end
+  end
+
+  def publish
+    @job = Job.find params[:id]
+    @job.update(is_hidden: false)
+    redirect_to admin_jobs_path
+  end
+
+  def hide
+    @job = Job.find params[:id]
+    @job.update(is_hidden: true)
+    redirect_to admin_jobs_path
   end
 
 
