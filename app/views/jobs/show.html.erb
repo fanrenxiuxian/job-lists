@@ -1,4 +1,8 @@
-<h3> <%= @job.title %> </h3>
-<p>
-<%= simple_format(@job.description) %>
-</p>
+<div class="col-md-12">
+  <%= link_to "投简历", "#", class:"btn btn-primary pull-right" %>
+
+  <h3> <%= @job.title %> </h3>
+  <p>
+  <%= simple_format(@job.description) %>
+  </p>
+</div>
