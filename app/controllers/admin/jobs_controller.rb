@@ -18,6 +18,10 @@ class Admin::JobsController < ApplicationController
     end
   end
 
+  def show
+    @job = Job.find params[:id]
+  end
+
   def edit
     @job = Job.find params[:id]
   end
@@ -32,6 +36,12 @@ class Admin::JobsController < ApplicationController
     end
   end
 
+  def destroy
+    @job = Job.find params[:id]
+    @job.destroy
+    redirect_to admin_jobs_path
+    flash[:alert] = "已删除这个招聘信息"
+  end
 
   private
   def job_params

@@ -1,0 +1,5 @@
+<%= link_to "编辑", edit_admin_job_path(@job), class:"btn btn-primary pull-right" %>
+<h3> <%= @job.title %> </h3>
+<p>
+<%= simple_format(@job.description) %>
+</p>
