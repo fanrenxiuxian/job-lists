@@ -4,6 +4,20 @@ class Admin::JobsController < ApplicationController
     @jobs = Job.all
   end
 
+  def new
+    @job = Job.new
+  end
+
+  def create
+    @job = Job.new job_params
+
+    if @job.save
+      redirect_to admin_jobs_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @job = Job.find params[:id]
   end

@@ -1,0 +1,6 @@
+<h2>New Job</h2>
+<%= simple_form_for [:admin,@job] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit "保存", class:"btn btn-primary btn-sm" %>
+<% end %>
