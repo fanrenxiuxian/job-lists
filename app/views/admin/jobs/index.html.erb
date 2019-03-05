@@ -1,1 +1,22 @@
 <h2>后台Job-Listing</h2>
+<%= link_to "New Job", new_job_path, class:"btn btn-primary pull-right" %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>职位名称</th>
+      <th>工作内容</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= link_to job.title, job_path(job) %></td>
+        <td><%= job.description %></td>
+        <td><%= link_to "编辑", edit_job_path(job) %></td>
+        <td><%= link_to "删除", job_path(job), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
