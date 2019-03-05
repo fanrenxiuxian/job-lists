@@ -12,7 +12,14 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= link_to job.title, admin_job_path(job) %></td>
+        <td>
+          <%= job_status(job) %>
+          <% if job.is_hidden %>
+            <%= link_to job.title, admin_job_path(job) %>
+          <% else %>
+            <%= link_to job.title, admin_job_path(job) %>
+          <% end %>
+        </td>
         <td><%= job.description %></td>
         <td>
           <% if job.is_hidden %>

@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'pry'
 gem 'pry-rails'
