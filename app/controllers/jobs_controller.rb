@@ -7,6 +7,11 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find params[:id]
+
+    if @job.is_hidden
+      redirect_to jobs_path
+      flash[:warning]="该工作已消失"
+    end
   end
 
   def new
