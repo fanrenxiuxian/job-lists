@@ -1,0 +1,5 @@
+<%= simple_form_for @resume do |f| %>
+  <%= f.hidden_field :job_id, value: @job.id %>
+  <%= f.input :content %>
+  <%= f.submit "发送简历" %>
+<% end %>
