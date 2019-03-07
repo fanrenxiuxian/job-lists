@@ -24,7 +24,7 @@
           <% end %>
         </td>
         <td><%= job.description %></td>
-        <td><%= link_to job.resumes.count, job_resumes_path(job),class:"btn btn-xs btn-primary" %></td>
+        <td><%= link_to job.resumes.count, admin_job_resumes_path(job),class:"btn btn-xs btn-primary" %></td>
         <td><%= job.wage_upper_bound %></td>
         <td><%= job.wage_lower_bound %></td>
         <td>

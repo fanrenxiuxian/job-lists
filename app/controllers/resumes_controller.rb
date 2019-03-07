@@ -1,11 +1,6 @@
 class ResumesController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create]
 
-  def index
-    @job = Job.find params[:job_id]
-    @resumes = @job.resumes
-  end
-
   def new
     @job = Job.find params[:job_id]
     @resume = Resume.new
@@ -19,7 +14,7 @@ class ResumesController < ApplicationController
 
     if @resume.save
       redirect_to job_path(@job)
-      flash[:notice] = "已成功发送简历"
+      flash[:notice] = "成功发送简历"
     else
       render :new
     end
@@ -30,5 +25,4 @@ class ResumesController < ApplicationController
   def resume_params
     params.require(:resume).permit(:content, :attachment)
   end
-
 end

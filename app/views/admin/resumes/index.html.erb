@@ -1,14 +1,16 @@
+<h3><%= @job.title %>收到的简历</h3>
+
 <table class="table">
   <thead>
-    <th>简历内容</th>
-    <th>附件</th>
+    <th></th>
+    <th></th>
   </thead>
 
   <tbody>
     <% @resumes.each do |resume| %>
       <tr>
         <td><%= resume.content %></td>
-        <td><%= resume.attachment_url %></td>
+        <td><%= resume.attachment %></td>
       </tr>
     <% end %>
   </tbody>
