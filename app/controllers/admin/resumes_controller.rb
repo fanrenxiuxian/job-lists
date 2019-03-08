@@ -4,6 +4,6 @@ class Admin::ResumesController < ApplicationController
 
   def index
     @job = Job.find params[:job_id]
-    @resumes = @job.resumes
+    @resumes = @job.resumes.paginate(page: params[:page], per_page: 5)
   end
 end
