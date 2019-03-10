@@ -6,8 +6,11 @@ class User < ApplicationRecord
   has_many :votes
   has_many :job_claps, through: :votes, source: :job
 
+  has_many :resumes
+
   has_many :disdains
   has_many :job_disdains, through: :disdains, source: :job
+  
   def admin?
     is_admin
   end

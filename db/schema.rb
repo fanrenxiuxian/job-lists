@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_03_08_035917) do
     t.string "contact_email"
   end
 
+  create_table "resumes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "job_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "attachment"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

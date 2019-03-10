@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :find_job, except: [:index,:new,:create]
 
   def index
-    @jobs = Job.where(is_hidden: false)
+    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 5)
   end
 
   def clap
@@ -46,6 +46,12 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job = Job.find params[:id]
+
+    if @job.is_hidden
+      redirect_to jobs_path
+      flash[:warning]="该工作已消失"
+    end
   end
 
   def new

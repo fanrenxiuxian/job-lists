@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post :cancel_clap_disdain
       post :disdain
     end
+    resources :resumes
   end
 
   namespace :admin do
@@ -16,7 +17,9 @@ Rails.application.routes.draw do
         post :publish
         post :hide
       end
+      resources :resumes
     end
+
   end
 
 end
