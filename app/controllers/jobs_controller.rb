@@ -1,8 +1,30 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect]
 
   def index
     @jobs = Job.where(is_hidden: false)
+  end
+
+  def collect
+    @job = Job.find(params[:id])
+    if !current_user.collector_of?(@job)
+      current_user.collect!(@job)
+      flash[:notice] = "已将该职位加入到收藏列表"
+    else
+      flash[:warning] = "该职位已在您的收藏列表"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def cancel_collect
+    @job = Job.find(params[:id])
+    if current_user.collector_of?(@job)
+      current_user.cancel_collect!(@job)
+      flash[:alert] = "已将该职位移出收藏列表"
+    else
+      flash[:warning] = "该职位已不在您的收藏列表"
+    end
+    redirect_back(fallback_location: jobs_path)
   end
 
   def show
