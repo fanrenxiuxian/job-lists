@@ -1,31 +1,41 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>职位名称</th>
-      <th>工作内容</th>
-      <th>学历要求</th>
-      <th>工作经验</th>
-      <th>工资上限</th>
-      <th>工资下限</th>
-      <th>发布时间</th>
-    </tr>
-  </thead>
+<div class="col-md-12">
+  <%= form_for Job.new, as: :query, method: :get, url: jobs_path do |f| %>
+    <%= f.text_field :title, placeholder:"请输入工作类型" %> -
+    <%= f.text_field :work_experience, placeholder:"请输入工作经验" %>
+    <%= f.submit "模糊查询" %>
+  <%end%>
+  <br>
 
-  <tbody>
-    <% @jobs.each do |job| %>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to job.title, job_path(job) %></td>
-        <td><%= job.description %></td>
-        <td><%= job.work_experience %></td>
-        <td><%= job.educational_background %></td>
-        <td><%= job.wage_upper_bound %></td>
-        <td><%= job.wage_lower_bound %></td>
-        <td><%= job.created_at %></td>
+        <th>职位名称</th>
+        <th>工作内容</th>
+        <th>学历要求</th>
+        <th>工作经验</th>
+        <th>工资上限</th>
+        <th>工资下限</th>
+        <th>发布时间</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.title, job_path(job) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.work_experience %></td>
+          <td><%= job.educational_background %></td>
+          <td><%= job.wage_upper_bound %></td>
+          <td><%= job.wage_lower_bound %></td>
+          <td><%= job.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <div class="text-center">
   <%= will_paginate @jobs %>
 </div>
+
 

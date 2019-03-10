@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 
   def index
+    binding.pry
     @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 15)
   end
 
