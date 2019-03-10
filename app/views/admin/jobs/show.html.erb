@@ -6,6 +6,12 @@
   <b>工作内容：</b>
   <%= simple_format(@job.description) %>
   <br>
+  <b>学历要求：</b>
+  <%= simple_format(@job.educational_background) %>
+  <br>
+  <b>工作经验要求：</b>
+  <%= simple_format(@job.work_experience) %>
+  <br>
   <b> 工资：</b>
   <%= @job.wage_lower_bound %>-<%= @job.wage_upper_bound %>
   <br>

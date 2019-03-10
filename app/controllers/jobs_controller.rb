@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
 
   def index
-    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 5)
+    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 15)
   end
 
   def show
@@ -52,6 +52,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :is_hidden, :wage_upper_bound, :wage_lower_bound, :contact_email)
+    params.require(:job).permit(:title, :description, :is_hidden, :wage_upper_bound, :wage_lower_bound, :contact_email, :educational_background, :work_experience)
   end
 end

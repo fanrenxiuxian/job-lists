@@ -3,6 +3,8 @@
     <tr>
       <th>职位名称</th>
       <th>工作内容</th>
+      <th>学历要求</th>
+      <th>工作经验</th>
       <th>工资上限</th>
       <th>工资下限</th>
       <th>发布时间</th>
@@ -14,6 +16,8 @@
       <tr>
         <td><%= link_to job.title, job_path(job) %></td>
         <td><%= job.description %></td>
+        <td><%= job.work_experience %></td>
+        <td><%= job.educational_background %></td>
         <td><%= job.wage_upper_bound %></td>
         <td><%= job.wage_lower_bound %></td>
         <td><%= job.created_at %></td>

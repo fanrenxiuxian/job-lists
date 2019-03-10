@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_035504) do
+ActiveRecord::Schema.define(version: 2019_03_10_090818) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_03_07_035504) do
     t.integer "wage_upper_bound"
     t.integer "wage_lower_bound"
     t.string "contact_email"
+    t.string "educational_background"
+    t.string "work_experience"
   end
 
   create_table "resumes", force: :cascade do |t|
