@@ -2,8 +2,8 @@
 <%= simple_form_for [:admin,@job] do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :work_experience, label:"工作经验",as: :radio_buttons, collection: [['应届毕业生','应届毕业生'],['三年以内','三年以内'],['3-5年','3-5年'],['不要求','不要求']] %>
-  <%= f.input :educational_background, label:"学历",as: :radio_buttons, collection: [['大专','大专'],['本科','本科'],['硕士','硕士'],['博士','博士']] %>
+  <%= f.input :work_experience, label:"工作经验",as: :radio_buttons, collection: [['不要求','不要求'],['应届毕业生','应届毕业生'],['三年以内','三年以内'],['3-5年','3-5年'],['五年以上','五年以上']] %>
+  <%= f.input :educational_background, label:"学历",as: :radio_buttons, collection: [['不要求','不要求'],['大专','大专'],['本科','本科'],['硕士','硕士'],['博士','博士']] %>
   <%= f.input :wage_upper_bound, label:"工资上限" %>
   <%= f.input :wage_lower_bound, label:"工资下限" %>
   <%= f.input :contact_email, label:"联系邮箱" %>

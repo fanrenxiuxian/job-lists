@@ -1,13 +1,12 @@
 <h2>New Job</h2>
 <%= simple_form_for [:admin,@job] do |f| %>
   <%= f.input :title, label: false, error: '请输入职位名称', hint: '请输入完整职位名称', placeholder: '职位名称', required: true, autofocus: true, input_html: { class: "form-control"} %>
-
   <%#= f.input :title %>
   <%= f.input :description %>
   <%= f.input :wage_upper_bound, label:"工资上限" %>
   <%= f.input :wage_lower_bound, label:"工资下限" %>
-  <%= f.input :work_experience, label:"工作经验",as: :radio_buttons, collection: [['应届毕业生','应届毕业生'],['三年以内','三年以内'],['3-5年','3-5年'],['不要求','不要求']] %>
-  <%= f.input :educational_background, label:"学历",as: :radio_buttons, collection: [['大专','大专'],['本科','本科'],['硕士','硕士'],['博士','博士']] %>
+  <%= f.input :work_experience, label:"工作经验",as: :radio_buttons, collection: [['不要求','不要求'],['应届毕业生','应届毕业生'],['三年以内','三年以内'],['3-5年','3-5年'],['五年以上','五年以上']], checked:['不要求','不要求'] %>
+  <%= f.input :educational_background, label:"学历",as: :radio_buttons, collection: [['不要求','不要求'],['大专','大专'],['本科','本科'],['硕士','硕士'],['博士','博士']], checked:['不要求','不要求'] %>
   <%= f.input :is_hidden, label:"是否公开该工作", as: :radio_buttons, collection:  [['公开', false], ['隐藏', true]] %>
   <%= f.input :contact_email, label:"联系邮箱" %>
   <%= f.submit "保存", class:"btn btn-primary btn-sm" %>
