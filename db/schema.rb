@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_035504) do
+ActiveRecord::Schema.define(version: 2019_03_08_035917) do
+
+  create_table "disdains", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -43,6 +50,13 @@ ActiveRecord::Schema.define(version: 2019_03_07_035504) do
     t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

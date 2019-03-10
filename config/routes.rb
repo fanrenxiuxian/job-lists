@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root 'jobs#index'
 
   resources :jobs do
+    member do
+      post :clap
+      post :cancel_clap_disdain
+      post :disdain
+    end
     resources :resumes
   end
 
