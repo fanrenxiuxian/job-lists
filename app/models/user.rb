@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :job_collections
+  has_many :collected_jobs, through: :job_collections, source: :job
   has_many :votes
   has_many :job_claps, through: :votes, source: :job
 
@@ -10,9 +12,21 @@ class User < ApplicationRecord
 
   has_many :disdains
   has_many :job_disdains, through: :disdains, source: :job
-  
+
   def admin?
     is_admin
+  end
+
+  def collector_of?(job)
+    self.collected_jobs.include?(job)
+  end
+
+  def collect!(job)
+    self.collected_jobs.push(job)
+  end
+
+  def cancel_collect!(job)
+    self.collected_jobs.delete(job)
   end
 
   def clapper_of?(job)

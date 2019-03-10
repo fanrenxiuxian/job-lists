@@ -1,5 +1,7 @@
 class Job < ApplicationRecord
   validates :title, presence: true
+  has_many :job_collections
+  has_many :job_collectors, through: :job_collections, source: :user
 
   validates :wage_upper_bound, presence: true
   validates :wage_lower_bound, presence: true

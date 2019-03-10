@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:clap, :cancel_clap]
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain]
   before_action :find_job, except: [:index,:new,:create]
 
   def index
@@ -41,6 +41,28 @@ class JobsController < ApplicationController
       flash[:notice] =  "已对该职位点踩"
     else
       flash[:alert] = "您已对该职位点踩过，无法再次点踩"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def collect
+    @job = Job.find(params[:id])
+    if !current_user.collector_of?(@job)
+      current_user.collect!(@job)
+      flash[:notice] = "已将该职位加入到收藏列表"
+    else
+      flash[:warning] = "该职位已在您的收藏列表"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def cancel_collect
+    @job = Job.find(params[:id])
+    if current_user.collector_of?(@job)
+      current_user.cancel_collect!(@job)
+      flash[:alert] = "已将该职位移出收藏列表"
+    else
+      flash[:warning] = "该职位已不在您的收藏列表"
     end
     redirect_back(fallback_location: jobs_path)
   end

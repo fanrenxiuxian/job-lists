@@ -15,9 +15,17 @@
       <tr>
         <td><%= link_to job.title, job_path(job) %></td>
         <% if !current_user %>
-          <td><%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-primary btn-success" %></td>
-          <td><%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-primary btn-danger " %></td>
+          <td>
+            <%= link_to("收藏",collect_job_path(job),method: :post,class: "btn btn-success")%>
+            <%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-primary btn-success" %>
+            <%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-primary btn-danger " %>
+          </td>
         <% else %>
+          <% if !current_user.collector_of?(job) %>
+            <td><%= link_to("收藏",collect_job_path(job),method: :post,class: "btn btn-success")%>
+          <% else %>
+            <td><%= link_to("取消收藏",cancel_collect_job_path(job),method: :post,class: "btn btn-default")%>
+          <% end %>
             <td>
           <% if !current_user.clapper_of?(job)%>
             <%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-primary btn-success" %>
