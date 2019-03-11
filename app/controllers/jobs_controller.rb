@@ -1,11 +1,22 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain]
-  before_action :find_job, except: [:index,:new,:create]
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain,:claps,:collections]
+  before_action :find_job, except: [:index,:new,:create,:claps,:collections]
 
   def index
     @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 5)
   end
 
+  #点赞的职位
+  def claps
+    @jobs = current_user.job_claps.paginate(page: params[:page],per_page: 10)
+  end
+
+  #收藏的职位
+  def collections
+    @jobs = current_user.collected_jobs.paginate(page: params[:page],per_page: 10)
+  end
+
+  #对职位进行点赞
   def clap
     if !current_user.clapper_of?(@job)
       current_user.clap!(@job)
@@ -16,6 +27,7 @@ class JobsController < ApplicationController
     redirect_back(fallback_location: jobs_path)
   end
 
+  #对职位进行取消点赞或点踩
   def cancel_clap_disdain
     if params[:status] == "clap" #如果参数是clap，则执行取消点赞
       if current_user.clapper_of?(@job)
@@ -35,6 +47,7 @@ class JobsController < ApplicationController
     redirect_back(fallback_location: jobs_path)
   end
 
+  #对职位进行点踩
   def disdain
     if !current_user.disdainer_of?(@job)
       current_user.disdain!(@job)
@@ -45,6 +58,7 @@ class JobsController < ApplicationController
     redirect_back(fallback_location: jobs_path)
   end
 
+  #对职位进行收藏
   def collect
     @job = Job.find(params[:id])
     if !current_user.collector_of?(@job)
@@ -56,6 +70,7 @@ class JobsController < ApplicationController
     redirect_back(fallback_location: jobs_path)
   end
 
+  #对职位进行取消收藏
   def cancel_collect
     @job = Job.find(params[:id])
     if current_user.collector_of?(@job)

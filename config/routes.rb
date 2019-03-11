@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       post :cancel_clap_disdain
       post :disdain
     end
+    collection do
+      get :collections
+      get :claps
+    end
     resources :resumes
   end
 
