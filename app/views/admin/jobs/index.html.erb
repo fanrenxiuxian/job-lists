@@ -5,7 +5,6 @@
   <thead>
     <tr>
       <th>职位名称</th>
-      <th>工作内容</th>
       <th>收到简历数量</th>
       <th>学历要求</th>
       <th>工作经验</th>
@@ -25,7 +24,6 @@
             <%= link_to job.title, admin_job_path(job) %>
           <% end %>
         </td>
-        <td><%= job.description %></td>
         <td><%= link_to job.resumes.count, admin_job_resumes_path(job),class:"btn btn-xs btn-primary" %></td>
         <td><%= job.work_experience %></td>
         <td><%= job.educational_background %></td>
