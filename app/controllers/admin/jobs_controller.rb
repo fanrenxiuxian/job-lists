@@ -3,7 +3,7 @@ class Admin::JobsController < ApplicationController
   before_action :require_is_admin
 
   def index
-    @jobs = Job.all.paginate(page: params[:page], per_page: 5)
+    @jobs = Job.all.paginate(page: params[:page], per_page: 15)
   end
 
   def new
@@ -67,6 +67,6 @@ class Admin::JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title, :description, :is_hidden, :wage_upper_bound, :wage_lower_bound, :contact_email)
+    params.require(:job).permit(:title, :description, :is_hidden, :wage_upper_bound, :wage_lower_bound, :contact_email, :educational_background, :work_experience)
   end
 end
