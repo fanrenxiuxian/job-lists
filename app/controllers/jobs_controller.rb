@@ -1,9 +1,70 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain]
+  before_action :find_job, except: [:index,:new,:create]
 
   def index
-    binding.pry
     @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 15)
+  end
+
+  def clap
+    if !current_user.clapper_of?(@job)
+      current_user.clap!(@job)
+      flash[:notice] =  "已对该职位点赞"
+    else
+      flash[:alert] = "您已对该职位点赞过，无法再次点赞"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def cancel_clap_disdain
+    if params[:status] == "clap" #如果参数是clap，则执行取消点赞
+      if current_user.clapper_of?(@job)
+        current_user.cancel_clap!(@job)
+        flash[:warning] =  "已取消对该职位点赞"
+      else
+        flash[:alert] =  "您未对该职位点赞，无法取消点赞"
+      end
+    elsif params[:status] == "disdain" #若参数是disdain，则执行取消点踩
+      if current_user.disdainer_of?(@job)
+        current_user.cancel_disdain!(@job)
+        flash[:warning] =  "已取消对该职位点踩"
+      else
+        flash[:alert] =  "您未对该职位点踩，无法取消点踩"
+      end
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def disdain
+    if !current_user.disdainer_of?(@job)
+      current_user.disdain!(@job)
+      flash[:notice] =  "已对该职位点踩"
+    else
+      flash[:alert] = "您已对该职位点踩过，无法再次点踩"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def collect
+    @job = Job.find(params[:id])
+    if !current_user.collector_of?(@job)
+      current_user.collect!(@job)
+      flash[:notice] = "已将该职位加入到收藏列表"
+    else
+      flash[:warning] = "该职位已在您的收藏列表"
+    end
+    redirect_back(fallback_location: jobs_path)
+  end
+
+  def cancel_collect
+    @job = Job.find(params[:id])
+    if current_user.collector_of?(@job)
+      current_user.cancel_collect!(@job)
+      flash[:alert] = "已将该职位移出收藏列表"
+    else
+      flash[:warning] = "该职位已不在您的收藏列表"
+    end
+    redirect_back(fallback_location: jobs_path)
   end
 
   def show
@@ -30,12 +91,9 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find params[:id]
   end
 
   def update
-    @job = Job.find params[:id]
-
     if @job.update job_params
       redirect_to jobs_path, notice:"更新成功"
     else
@@ -44,7 +102,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find params[:id]
     @job.destroy
     redirect_to jobs_path
     flash[:alert] = "删除成功"
@@ -54,5 +111,9 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:title, :description, :is_hidden, :wage_upper_bound, :wage_lower_bound, :contact_email, :educational_background, :work_experience)
+  end
+
+  def find_job
+    @job = Job.find(params[:id])
   end
 end
