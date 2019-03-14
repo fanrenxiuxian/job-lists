@@ -13,7 +13,6 @@ class JobsController < ApplicationController
       search_result = Job.ransack(@search_criteria).result(distinct: true)
       @jobs = search_result.paginate(page: params[:page], per_page: 15)
     end
-    render :index
   end
 
   #点赞的职位
