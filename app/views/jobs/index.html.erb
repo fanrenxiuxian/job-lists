@@ -1,9 +1,5 @@
 <div class="col-md-12">
-  <%= form_for Job.new, as: :query, method: :get, url: jobs_path do |f| %>
-    <%= f.text_field :title, placeholder:"请输入工作类型" %> -
-    <%= f.text_field :work_experience, placeholder:"请输入工作经验" %>
-    <%= f.submit "模糊查询" %>
-  <%end%>
+  <%= render "search_bar" %>
   <br>
   <table class="table table-hover">
     <thead>
@@ -57,8 +53,7 @@
     </tbody>
   </table>
 </div>
+
 <div class="text-center">
-  <%= will_paginate @jobs %>
+ <%= will_paginate @jobs %>
 </div>
-
-

@@ -1,9 +1,18 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain,:claps,:collections]
-  before_action :find_job, except: [:index,:new,:create,:claps,:collections]
+  before_action :find_job, except: [:index,:new,:create,:claps,:collections,:search]
+  before_action :validate_search_key, only: [:search]
 
   def index
     @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 15)
+  end
+
+  #搜索职位
+  def search
+    if @query_string.present?
+      search_result = Job.ransack(@search_criteria).result(distinct: true)
+      @jobs = search_result.paginate(page: params[:page], per_page: 15)
+    end
   end
 
   #点赞的职位
@@ -120,6 +129,19 @@ class JobsController < ApplicationController
     @job.destroy
     redirect_to jobs_path
     flash[:alert] = "删除成功"
+  end
+
+
+  protected
+
+  #取到params[:q]的内容并去掉非法的内容
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+  def search_criteria(query_string)
+    { :title_cont => query_string }
   end
 
   private
