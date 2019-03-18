@@ -1,0 +1,20 @@
+<h4><%= current_user.email %>收到的消息</h4>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>发信人</th>
+      <th>内容</th>
+      <th>收到信件的时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |msg| %>
+      <tr>
+        <td>管理员</td>
+        <td><%= msg.content %></td>
+        <td><%= msg.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
