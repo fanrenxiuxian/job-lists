@@ -1,9 +1,14 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin, only:[:new, :create]
+  layout 'admin'
 
   def index
-    @messages = current_user.receiver_messages
+    if current_user.is_admin?
+      @messages = current_user.sender_messages
+    else
+      @messages = current_user.receiver_messages
+    end
   end
 
   def new
