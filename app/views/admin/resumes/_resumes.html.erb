@@ -4,7 +4,6 @@
       <div class="col-md-12">
         <h3 class="panel-title">
           <%= resume.user.email %>
-          <%= link_to "反馈", new_message_path(resume_id: resume.id, job_id: @job.id) %>
         </h3>
       </div>
     </div>
@@ -23,5 +22,10 @@
     <% else %>
       没有简历
     <% end %>
+    <% if @job.messages.empty? %>
+      <%= link_to "反馈", new_message_path(resume_id: resume.id, job_id: @job.id), class:"btn btn-xs btn-default" %>
+    <% else%>
+      <button class="btn btn-xs btn-success">已反馈</button>
+    <% end%>
   </div>
 </div>

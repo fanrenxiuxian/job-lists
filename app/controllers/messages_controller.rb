@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @job = Job.find params[:job_id]
+    @job = Job.find params[:message][:job_id]
     @message = Message.new message_params
     if @message.save
       redirect_to admin_job_resumes_path(@job)
@@ -26,6 +26,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :receiver_id, :sender_id)
+    params.require(:message).permit(:content, :receiver_id, :sender_id, :job_id)
   end
 end
