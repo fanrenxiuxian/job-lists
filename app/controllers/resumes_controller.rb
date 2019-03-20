@@ -1,5 +1,9 @@
 class ResumesController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create]
+  before_action :authenticate_user!, only:[:new, :create, :index]
+
+  def index
+    @resumes = current_user.resumes
+  end
 
   def new
     @job = Job.find params[:job_id]
