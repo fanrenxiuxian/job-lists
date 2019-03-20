@@ -9,6 +9,7 @@ class Job < ApplicationRecord
   validates :wage_upper_bound, numericality:{ greater_than: :wage_lower_bound }
 
   has_many :resumes
+  has_many :messages
 
   has_many :votes #点赞
   has_many :clappers, through: :votes, source: :user

@@ -13,6 +13,15 @@ class User < ApplicationRecord
   has_many :disdains
   has_many :job_disdains, through: :disdains, source: :job
 
+
+  has_many :sender_messages, class_name:"Message", foreign_key: "sender_id"
+  has_many :receiver_messages, class_name:"Message", foreign_key: "receiver_id"
+
+
+
+
+
+
   def admin?
     is_admin
   end

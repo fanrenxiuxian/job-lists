@@ -22,5 +22,12 @@
     <% else %>
       没有简历
     <% end %>
+
+    <% if resume.user.receiver_messages.pluck(:job_id).include?(@job.id) %>
+      <button class="btn btn-xs btn-success">已反馈</button>
+    <% else %>
+      <%= link_to "反馈", new_admin_message_path(resume_id: resume.id, job_id: @job.id), class:"btn btn-xs btn-default" %>
+    <% end %>
+
   </div>
 </div>

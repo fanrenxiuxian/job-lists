@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_121933) do
+ActiveRecord::Schema.define(version: 2019_03_19_085632) do
 
   create_table "disdains", force: :cascade do |t|
     t.integer "user_id"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_121933) do
     t.string "contact_email"
     t.string "educational_background"
     t.string "work_experience"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "receiver_id"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "job_id"
   end
 
   create_table "resumes", force: :cascade do |t|

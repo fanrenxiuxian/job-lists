@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>收件人</th>
+      <th>内容</th>
+      <th>所属工作</th>
+      <th>操作</th>
+      <th>发件人</th>
+      <th>收到信件的时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |msg| %>
+      <tr>
+        <td><%= msg.receiver.email %></td>
+        <td><%= msg.content %></td>
+        <td><%= msg.job.title %></td>
+        <td><%= link_to "查看", admin_message_path(msg) %></td>
+        <td>管理员</td>
+        <td><%= msg.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

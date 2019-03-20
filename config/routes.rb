@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'jobs#index'
 
+  resources :messages
+
   resources :jobs do
     member do
       post :collect
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
       end
       resources :resumes
     end
-
+    resources :messages
   end
 
 end

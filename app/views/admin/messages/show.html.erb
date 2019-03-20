@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  管理员发送至<br>
+  <span><%= @message.receiver.email %></span>
+  <div class="pull-right">
+    <%= @message.created_at %>
+  </div>
+  <hr>
+
+  内容：
+  <br>
+  <%= @message.content %>
+  <hr>
+</div>
+
+

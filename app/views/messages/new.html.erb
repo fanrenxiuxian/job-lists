@@ -1,0 +1,12 @@
+<h4>向<span style="color: blue">管理员<%= @admin.email %></span>发送信息</h4>
+
+<%= simple_form_for @message do |f| %>
+  <%= f.hidden_field :receiver_id, value: @admin.id %>
+  <%= f.hidden_field :sender_id, value: current_user.id %>
+  <%= f.text_area :content, label: "内容" %><br>
+  <%= f.submit "发送" %>
+<% end %>
+
+
+
+
