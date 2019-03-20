@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       end
       resources :resumes
     end
-
+    resources :messages
   end
 
 end

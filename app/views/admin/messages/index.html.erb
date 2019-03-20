@@ -15,7 +15,7 @@
         <td><%= msg.receiver.email %></td>
         <td><%= msg.content %></td>
         <td><%= msg.job.title %></td>
-        <td><%= link_to "查看", message_path(msg) %></td>
+        <td><%= link_to "查看", admin_message_path(msg) %></td>
         <td>管理员</td>
         <td><%= msg.created_at %></td>
       </tr>

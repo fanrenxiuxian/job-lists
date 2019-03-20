@@ -1,0 +1,13 @@
+<div class="col-md-12">
+  <h5>管理员<%= @message.sender.email %></h5>
+  发送至 我
+  <div class="pull-right">
+    <%= @message.created_at %>
+  </div>
+  <hr>
+  <%= @message.content %>
+  <hr>
+  <%= link_to "回复", new_message_path(user_id: @message.sender.id), class:"btn btn-success" %>
+</div>
+
+
