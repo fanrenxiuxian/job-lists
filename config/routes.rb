@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'jobs#index'
 
   resources :messages
+  resources :resumes
 
   resources :jobs do
     member do
