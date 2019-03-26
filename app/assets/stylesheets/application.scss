@@ -14,7 +14,43 @@
  *= require_tree .
  *= require_self
  */
-
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+/********************************导航的样式***********************************/
+.navbar-lp {
+  height: 50px;
+  background: #202329;
+  margin-bottom: 0;
+  border-color: transparent;
+}
+
+.navbar-lp .container,
+.navbar-lp .container .row {
+  height: 50px;
+}
+
+.navbar-lp .navbar-header img {
+  margin-top: 5px; 
+}
+
+.navbar-default .navbar-nav li a {
+  color: #d2cbcb;
+  margin-top: 0;
+}
+
+.navbar-default .navbar-nav li.active a {
+  color: #00d7c6;
+  background-color: transparent;
+  margin-left: 20px;
+}
+
+.navbar-default .navbar-nav li a:hover,
+.navbar-default .navbar-nav li.active a:hover {
+  color: #00d7c6;
+  background-color: transparent;
+}
+/********************************导航的样式***********************************/
+/********************************搜索框的样式***********************************/
+
+/********************************搜索框的样式***********************************/
