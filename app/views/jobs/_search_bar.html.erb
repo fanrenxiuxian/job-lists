@@ -1,6 +1,7 @@
-<div class="search_bar">
-  <div class="col-sm-9 col-lg-8 col-lg-offset-2">
-    <%= form_tag search_jobs_path , :method => :get, :class => "jobs-search-form" do %>
+<div id="lp_search" class="container">
+  <div class="row">
+    <div class="col-sm-9 col-lg-8 col-lg-offset-2">
+      <%= form_tag search_jobs_path , :method => :get, :class => "jobs-search-form" do %>
       <div class="input-group">
         <input type="text" class="form-control" name="q" value="<%= params[:q] %>" placeholder="搜索工作关键字...">
         <span class="input-group-btn">
@@ -11,4 +12,5 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>

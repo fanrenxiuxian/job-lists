@@ -31,7 +31,7 @@
 }
 
 .navbar-lp .navbar-header img {
-  margin-top: 5px; 
+  margin-top: 5px;
 }
 
 .navbar-default .navbar-nav li a {
@@ -52,5 +52,16 @@
 }
 /********************************导航的样式***********************************/
 /********************************搜索框的样式***********************************/
+#lp_search {
+  // border: 1px solid red;
+  height: 100px;
+  width: 100%;
+  background-image: url("bg1.png");
+  background: cover;
+}
+
+#lp_search .row {
+  margin-top: 30px;
+}
 
 /********************************搜索框的样式***********************************/
