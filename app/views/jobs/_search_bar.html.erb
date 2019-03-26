@@ -1,6 +1,6 @@
 <div id="lp_search" class="container">
   <div class="row">
-    <div class="col-sm-9 col-lg-8 col-lg-offset-2">
+    <div class="col-md-8 col-md-offset-2">
       <%= form_tag search_jobs_path , :method => :get, :class => "jobs-search-form" do %>
       <div class="input-group">
         <input type="text" class="form-control" name="q" value="<%= params[:q] %>" placeholder="搜索工作关键字...">
@@ -12,5 +12,23 @@
       </div>
     <% end %>
   </div>
+  <ul class="hot_search col-md-8 col-md-offset-2">
+    <li class="text-muted">热门搜索：</li>
+    <li>
+      <a href="#">java</a>
+    </li>
+    <li>
+      <a href="#">web前端</a>
+    </li>
+    <li>
+      <a href="#">数据分析</a>
+    </li>
+    <li>
+      <a href="#">PHP</a>
+    </li>
+    <li>
+      <a href="#">C++</a>
+    </li>
+  </ul>
 </div>
 </div>
