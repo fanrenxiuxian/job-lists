@@ -1,44 +1,45 @@
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Job Lists</a>
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">招聘网站</a>
+      </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if !current_user %>
-          <li><%= link_to "注册", new_user_registration_path %></li>
-          <li><%= link_to "登入", new_user_session_path %></li>
-        <% else %>
-
-          <% if current_user.is_admin? %>
-            <li><%= link_to "消息", admin_messages_path %></li>
+      <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if !current_user %>
+            <li><%= link_to "注册", new_user_registration_path %></li>
+            <li><%= link_to "登入", new_user_session_path %></li>
           <% else %>
-            <li><%= link_to "消息", messages_path %></li>
-          <% end %>
 
-          <li class="dropdown ">
-            <a href="#", class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.email %>
-              <b class="caret"></b>
-            </a>
+            <% if current_user.is_admin? %>
+              <li><%= link_to "消息", admin_messages_path %></li>
+            <% else %>
+              <li><%= link_to "消息", messages_path %></li>
+            <% end %>
 
-            <ul class="dropdown-menu">
-              <% if current_user.is_admin %>
-                <li><%= link_to "后台管理", admin_jobs_path %></li>
-              <% end %>
+            <li class="dropdown ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.email %>
+                <b class="caret"></b>
+              </a>
+
+              <ul class="dropdown-menu">
+                <% if current_user.is_admin %>
+                  <li><%= link_to "后台管理", admin_jobs_path %></li>
+                <% end %>
                 <li><%= link_to "我投过的简历", resumes_path %></li>
                 <li><%= link_to "收藏的职位", collections_jobs_path %></li>
                 <li><%= link_to "赞过的职位", claps_jobs_path %></li>
-              <li>
-                <%= link_to "退出", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
+                <li>
+                  <%= link_to "退出", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
 
-          </li>
-        <% end %>
-
-      </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'jobs#index'
+  root 'welcome#index'
 
   resources :messages
   resources :resumes
@@ -31,5 +31,4 @@ Rails.application.routes.draw do
     end
     resources :messages
   end
-
 end

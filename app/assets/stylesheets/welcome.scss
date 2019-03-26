@@ -1,3 +1,85 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/********************************背景样式***********************************/
+.banner{
+    background-image: url('banner.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 100vh;
+    position: relative;
+}
+.banner .overlay{
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+}
+.banner .banner-content{
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    transform: translateY(-50%);
+}
+.banner .banner-content h3{
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+.banner .banner-content p{
+    color: #fff;
+    font-size: 16px;
+}
+/********************************背景样式***********************************/
+/********************************按钮样式***********************************/
+a {
+  margin-top: 10px;
+}
+a.btn:hover {
+    color: #fff;
+}
+
+.btn-black {
+  color: #E0E0E0;
+  background-color: #141206;
+  border-color: #0A0A0A;
+}
+
+.btn-black:hover,
+.btn-black:focus,
+.btn-black:active,
+.btn-black.active,
+.open .dropdown-toggle.btn-black {
+  color: #fff;
+  background-color: #000;
+  border-color: #0A0A0A;
+}
+
+.btn-black:active,
+.btn-black.active,
+.open .dropdown-toggle.btn-black {
+  background-image: none;
+}
+
+.btn-black.disabled,
+.btn-black[disabled],
+fieldset[disabled] .btn-black,
+.btn-black.disabled:hover,
+.btn-black[disabled]:hover,
+fieldset[disabled] .btn-black:hover,
+.btn-black.disabled:focus,
+.btn-black[disabled]:focus,
+fieldset[disabled] .btn-black:focus,
+.btn-black.disabled:active,
+.btn-black[disabled]:active,
+fieldset[disabled] .btn-black:active,
+.btn-black.disabled.active,
+.btn-black[disabled].active,
+fieldset[disabled] .btn-black.active {
+  background-color: #1E1D1F;
+  border-color: #0A0A0A;
+}
+
+.btn-black .badge {
+  color: #1E1D1F;
+  background-color: #E0E0E0;
+}
+/********************************按钮样式***********************************/
