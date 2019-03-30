@@ -1,3 +1,47 @@
 // Place all the styles related to the admin::jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/**********************************表格样式-start******************************/
+.admin-panel .admin-panel-heading {
+  background-color: #39ADB4;
+  color: white;
+  height: 65px;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.admin-panel table.table-hover thead th {
+  text-align: center;
+}
+.admin-panel table.table-hover thead th,
+table.table-hover thead th tr {
+  height: 65px;
+}
+
+.admin-panel table.table-hover > tbody > tr {
+  height: 45px;
+}
+
+.admin-panel table.table-hover > tbody > tr > td {
+    line-height: 45px;
+}
+
+.admin-panel table.table-hover > tbody > tr:hover {
+    background-color: #e3f3f3;
+}
+
+.admin-panel table.table-hover tbody td.change_status a {
+  margin-top: 0;
+}
+
+.admin-panel table.table-hover tbody a {
+  color: #4FADB4
+}
+
+ .admin-panel table.table-hover tbody td.change_status a {
+  color: #fff;
+}
+
+/**********************************表格样式-end******************************/

@@ -2,60 +2,68 @@
 <br>
 <div class="container">
   <div class="row">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>职位名称</th>
-          <th>学历要求</th>
-          <th>工作经验</th>
-          <th>工资上限</th>
-          <th>工资下限</th>
-          <th>操作选项</th>
-          <th>发布时间</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @jobs.each do |job| %>
+    <div class="panel">
+      <div class="panel-heading">
+        <h4>职位需求</h4>
+      </div>
+      <table class="table table-hover text-center">
+        <thead>
           <tr>
-            <td><%= link_to job.title, job_path(job) %></td>
-            <td><%= job.work_experience %></td>
-            <td><%= job.educational_background %></td>
-            <td><%= job.wage_upper_bound %></td>
-            <td><%= job.wage_lower_bound %></td>
-            <% if !current_user %>
-              <td>
-                <%= link_to "收藏", collect_job_path(job),method: :post,class: "btn btn-success" %>
-                <%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-primary btn-success" %>
-                <%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-primary btn-danger " %>
-              </td>
-            <% else %>
-              <td>
-                <% if !current_user.collector_of?(job) %>
-                  <%= link_to("收藏",collect_job_path(job),method: :post,class: "btn btn-success")%>
-                <% else %>
-                  <%= link_to("取消收藏",cancel_collect_job_path(job),method: :post,class: "btn btn-default")%>
-                <% end %>
-                <% if !current_user.clapper_of?(job)%>
-                  <%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-primary btn-success" %>
-                <% else %>
-                  <%= link_to "取消", cancel_clap_disdain_job_path(job,status: "clap"),method: :post,class: "btn btn-primary btn-info" %>
-                <% end %>
-                <% if !current_user.disdainer_of?(job) %>
-                  <%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-primary btn-warning" %>
-                <% else %>
-                  <%= link_to "取消", cancel_clap_disdain_job_path(job,status: "disdain"),method: :post,class: "btn btn-primary " %>
-                <% end %>
-              </td>
-            <% end %>
-            <td><%= job.created_at %></td>
+            <th>职位名称</th>
+            <th>学历要求</th>
+            <th>工作经验</th>
+            <th>工资上限</th>
+            <th>工资下限</th>
+            <th>操作选项</th>
+            <th>发布时间</th>
           </tr>
-        <% end %>
-      </tbody>
+        </thead>
+
+        <tbody>
+          <% @jobs.each do |job| %>
+            <tr>
+              <td><%= link_to job.title, job_path(job) %></td>
+              <td><%= job.work_experience %></td>
+              <td><%= job.educational_background %></td>
+              <td><%= job.wage_upper_bound %></td>
+              <td><%= job.wage_lower_bound %></td>
+              <% if !current_user %>
+                <td>
+                  <%= link_to "收藏", collect_job_path(job),method: :post,class: "btn btn-xs btn-count" %>
+                  <%= link_to "赞", clap_job_path(job),method: :post,class: "btn btn-xs btn-count" %>
+                  <%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-xs btn-hide" %>
+                </td>
+              <% else %>
+                <td>
+                  <% if !current_user.collector_of?(job) %>
+                    <%= link_to("收藏",collect_job_path(job),method: :post,class: "btn btn-xs btn-count")%>
+                  <% else %>
+                    <%= link_to("取消收藏",cancel_collect_job_path(job),method: :post,class: "btn btn-xs btn-warning")%>
+                  <% end %>
+                  <% if !current_user.clapper_of?(job)%>
+                    <%= link_to "赞", clap_job_path(job),method: :post,class: "btn bt-xs btn-count" %>
+                  <% else %>
+                    <%= link_to "取消", cancel_clap_disdain_job_path(job,status: "clap"),method: :post,class: "btn btn-xs btn-warning" %>
+                  <% end %>
+                  <% if !current_user.disdainer_of?(job) %>
+                    <%= link_to "踩", disdain_job_path(job),method: :post,class: "btn btn-xs btn-hide" %>
+                  <% else %>
+                    <%= link_to "取消", cancel_clap_disdain_job_path(job,status: "disdain"),method: :post,class: "btn btn-xs btn-warning" %>
+                  <% end %>
+                </td>
+              <% end %>
+              <td><%= job.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-</table>
+</div>
 
+<!-- <div class="text-center"> <%= will_paginate @jobs %> </div> -->
 <div class="text-center">
-  <%= will_paginate @jobs %>
+  <div class="apple_pagination">
+    <%= will_paginate @jobs, :container => false %>
+  </div>
 </div>

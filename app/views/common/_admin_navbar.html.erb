@@ -1,0 +1,32 @@
+<nav id="admin_navbar" class="navbar navbar-default col-md-10">
+  <!-- 左边 -->
+  <div class="nav navbar-brand"></div>
+  <!-- 右边 -->
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a href="#"></a>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+        <i class="fa fa-user"></i>
+        <%= current_user.email %>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#">Action</a>
+        </li>
+        <li>
+          <a href="#">Another action</a>
+        </li>
+        <li>
+          <a href="#">Something else here</a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li>
+          <%= link_to"退出", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

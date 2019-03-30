@@ -1,0 +1,27 @@
+<section id="admin_side_bar" class="col-md-2">
+  <div class="overlay">
+    <div class="side-bar-head">
+      <h3>乐聘</h3>
+      <!-- <img src="assets/logo.png" alt="logo"> -->
+    </div>
+    <div class="side-bar-main">
+      <ul class="nav nav-pills nav-stacked navbar-static-side">
+        <li class="active">
+          <%= link_to "后台首页", admin_jobs_path, class:"text-center" %>
+        </li>
+        <li>
+          <%= link_to "前台首页", jobs_path, class:"text-center" %>
+        </li>
+        <li>
+          <%= link_to "发布工作", new_admin_job_path, class:"text-center" %>
+        </li>
+        <li>
+          <%= link_to "公开的工作", "#", class:"text-center" %>
+        </li>
+        <li>
+          <%= link_to "隐藏的工作", "#", class:"text-center" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

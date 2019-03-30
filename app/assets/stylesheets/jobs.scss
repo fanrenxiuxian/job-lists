@@ -1,3 +1,31 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.panel .panel-heading {
+  background-color: #61cab0;
+  color: white;
+  height: 65px;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.panel table thead tr {
+  height: 64px;
+}
+.panel table thead tr th {
+  text-align: center;
+}
+
+.panel table tbody tr {
+  height: 46px;
+}
+
+.panel table tbody tr td {
+  vertical-align: middle;
+}
+
+.panel table tbody tr td .btn {
+  margin-top: 0;
+}

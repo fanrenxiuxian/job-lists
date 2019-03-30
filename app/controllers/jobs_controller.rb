@@ -1,13 +1,13 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy,:collect,:cancel_collect,:clap, :cancel_clap_disdain,:disdain,:claps,:collections]
-  before_action :find_job, except: [:index,:new,:create,:claps,:collections,:search]
+  before_action :authenticate_user!, only: %i[new create edit update destroy collect cancel_collect clap cancel_clap_disdain disdain claps collections]
+  before_action :find_job, except: %i[index new create claps collections search]
   before_action :validate_search_key, only: [:search]
 
   def index
-    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 15)
+    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 5)
   end
 
-  #搜索职位
+  # 搜索职位
   def search
     if @query_string.present?
       search_result = Job.ransack(@search_criteria).result(distinct: true)
@@ -15,78 +15,78 @@ class JobsController < ApplicationController
     end
   end
 
-  #点赞的职位
+  # 点赞的职位
   def claps
-    @jobs = current_user.job_claps.paginate(page: params[:page],per_page: 10)
+    @jobs = current_user.job_claps.paginate(page: params[:page], per_page: 10)
   end
 
-  #收藏的职位
+  # 收藏的职位
   def collections
-    @jobs = current_user.collected_jobs.paginate(page: params[:page],per_page: 10)
+    @jobs = current_user.collected_jobs.paginate(page: params[:page], per_page: 10)
   end
 
-  #对职位进行点赞
+  # 对职位进行点赞
   def clap
     if !current_user.clapper_of?(@job)
       current_user.clap!(@job)
-      flash[:notice] =  "已对该职位点赞"
+      flash[:notice] = '已对该职位点赞'
     else
-      flash[:alert] = "您已对该职位点赞过，无法再次点赞"
+      flash[:alert] = '您已对该职位点赞过，无法再次点赞'
     end
     redirect_back(fallback_location: jobs_path)
   end
 
-  #对职位进行取消点赞或点踩
+  # 对职位进行取消点赞或点踩
   def cancel_clap_disdain
-    if params[:status] == "clap" #如果参数是clap，则执行取消点赞
+    if params[:status] == 'clap' # 如果参数是clap，则执行取消点赞
       if current_user.clapper_of?(@job)
         current_user.cancel_clap!(@job)
-        flash[:warning] =  "已取消对该职位点赞"
+        flash[:warning] = '已取消对该职位点赞'
       else
-        flash[:alert] =  "您未对该职位点赞，无法取消点赞"
+        flash[:alert] = '您未对该职位点赞，无法取消点赞'
       end
-    elsif params[:status] == "disdain" #若参数是disdain，则执行取消点踩
+    elsif params[:status] == 'disdain' # 若参数是disdain，则执行取消点踩
       if current_user.disdainer_of?(@job)
         current_user.cancel_disdain!(@job)
-        flash[:warning] =  "已取消对该职位点踩"
+        flash[:warning] = '已取消对该职位点踩'
       else
-        flash[:alert] =  "您未对该职位点踩，无法取消点踩"
+        flash[:alert] = '您未对该职位点踩，无法取消点踩'
       end
     end
     redirect_back(fallback_location: jobs_path)
   end
 
-  #对职位进行点踩
+  # 对职位进行点踩
   def disdain
     if !current_user.disdainer_of?(@job)
       current_user.disdain!(@job)
-      flash[:notice] =  "已对该职位点踩"
+      flash[:notice] = '已对该职位点踩'
     else
-      flash[:alert] = "您已对该职位点踩过，无法再次点踩"
+      flash[:alert] = '您已对该职位点踩过，无法再次点踩'
     end
     redirect_back(fallback_location: jobs_path)
   end
 
-  #对职位进行收藏
+  # 对职位进行收藏
   def collect
     @job = Job.find(params[:id])
     if !current_user.collector_of?(@job)
       current_user.collect!(@job)
-      flash[:notice] = "已将该职位加入到收藏列表"
+      flash[:notice] = '已将该职位加入到收藏列表'
     else
-      flash[:warning] = "该职位已在您的收藏列表"
+      flash[:warning] = '该职位已在您的收藏列表'
     end
     redirect_back(fallback_location: jobs_path)
   end
 
-  #对职位进行取消收藏
+  # 对职位进行取消收藏
   def cancel_collect
     @job = Job.find(params[:id])
     if current_user.collector_of?(@job)
       current_user.cancel_collect!(@job)
-      flash[:alert] = "已将该职位移出收藏列表"
+      flash[:alert] = '已将该职位移出收藏列表'
     else
-      flash[:warning] = "该职位已不在您的收藏列表"
+      flash[:warning] = '该职位已不在您的收藏列表'
     end
     redirect_back(fallback_location: jobs_path)
   end
@@ -96,7 +96,7 @@ class JobsController < ApplicationController
 
     if @job.is_hidden
       redirect_to jobs_path
-      flash[:warning]="该工作已消失"
+      flash[:warning] = '该工作已消失'
     end
   end
 
@@ -108,18 +108,17 @@ class JobsController < ApplicationController
     @job = Job.new job_params
 
     if @job.save
-      redirect_to jobs_path, notice:"创建成功"
+      redirect_to jobs_path, notice: '创建成功'
     else
       render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @job.update job_params
-      redirect_to jobs_path, notice:"更新成功"
+      redirect_to jobs_path, notice: '更新成功'
     else
       render :edit
     end
@@ -128,20 +127,19 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     redirect_to jobs_path
-    flash[:alert] = "删除成功"
+    flash[:alert] = '删除成功'
   end
-
 
   protected
 
-  #取到params[:q]的内容并去掉非法的内容
+  # 取到params[:q]的内容并去掉非法的内容
   def validate_search_key
-    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @query_string = params[:q].gsub(%r{\\|\'|/|\?}, '') if params[:q].present?
     @search_criteria = search_criteria(@query_string)
   end
 
   def search_criteria(query_string)
-    { :title_cont => query_string }
+    { title_cont: query_string }
   end
 
   private

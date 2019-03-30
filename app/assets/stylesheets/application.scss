@@ -17,7 +17,154 @@
 @import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-/********************************导航的样式***********************************/
+/********************************通用样式-start***********************************/
+body {
+  background-color: #f5f5f5;
+  height: 1029px;
+}
+
+body > .container-fluid {
+  // padding: 0;
+}
+/********************************通用样式-end***********************************/
+/********************************分页样式-start*************************************/
+.apple_pagination {
+  background: transparent;
+  // border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default;
+}
+
+.apple_pagination a,
+.apple_pagination span {
+  padding: 0.2em 0.3em;
+}
+
+.apple_pagination .disabled {
+  color: #aaa;
+}
+
+.apple_pagination .current {
+  font-style: normal;
+  background-color: #429399;
+  color: #fff;
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.5;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+}
+
+.apple_pagination a {
+  text-decoration: none;
+  // color: #61cab0;
+  color: #008792;
+
+}
+
+.apple_pagination a:focus,
+.apple_pagination a:hover {
+  text-decoration: underline;
+}
+/********************************分页样式-end*************************************/
+/********************************自定义按钮*************************************/
+.btn-count {
+  color: #ffffff;
+  background-color: #4FADB4;
+  border-color: transparent;
+}
+
+.btn-count.active,
+.btn-count:active,
+.btn-count:focus,
+.btn-count:hover,
+.open .dropdown-toggle.btn-count {
+  color: #ffffff;
+  background-color: #429399;
+  border-color: #FFFFFF;
+}
+
+.btn-count.active,
+.btn-count:active,
+.open .dropdown-toggle.btn-count {
+  background-image: none;
+}
+
+.btn-count.disabled,
+.btn-count.disabled.active,
+.btn-count.disabled:active,
+.btn-count.disabled:focus,
+.btn-count.disabled:hover,
+.btn-count[disabled],
+.btn-count[disabled].active,
+.btn-count[disabled]:active,
+.btn-count[disabled]:focus,
+.btn-count[disabled]:hover,
+fieldset[disabled] .btn-count,
+fieldset[disabled] .btn-count.active,
+fieldset[disabled] .btn-count:active,
+fieldset[disabled] .btn-count:focus,
+fieldset[disabled] .btn-count:hover {
+  background-color: #4FADB4;
+  border-color: #FFFFFF;
+}
+
+.btn-count .badge {
+  color: #4FADB4;
+  background-color: #ffffff;
+}
+
+.btn-hide {
+  color: #ffffff;
+  background-color: #905A3D;
+  border-color: transparent;
+}
+
+.btn-hide.active,
+.btn-hide:active,
+.btn-hide:focus,
+.btn-hide:hover,
+.open .dropdown-toggle.btn-hide {
+  color: #ffffff;
+  background-color: #70452E;
+  border-color: #FFFFFF;
+}
+
+.btn-hide.active,
+.btn-hide:active,
+.open .dropdown-toggle.btn-hide {
+  background-image: none;
+}
+
+.btn-hide.disabled,
+.btn-hide.disabled.active,
+.btn-hide.disabled:active,
+.btn-hide.disabled:focus,
+.btn-hide.disabled:hover,
+.btn-hide[disabled],
+.btn-hide[disabled].active,
+.btn-hide[disabled]:active,
+.btn-hide[disabled]:focus,
+.btn-hide[disabled]:hover,
+fieldset[disabled] .btn-hide,
+fieldset[disabled] .btn-hide.active,
+fieldset[disabled] .btn-hide:active,
+fieldset[disabled] .btn-hide:focus,
+fieldset[disabled] .btn-hide:hover {
+  background-color: #905A3D;
+  border-color: #FFFFFF;
+}
+
+.btn-hide .badge {
+  color: #905A3D;
+  background-color: #ffffff;
+}
+/********************************自定义按钮*************************************/
+/********************************前台导航样式-start***********************************/
 .navbar-lp {
   height: 50px;
   background: #202329;
@@ -34,29 +181,29 @@
   margin-top: 5px;
 }
 
-.navbar-default .navbar-nav li a {
+.navbar-lp .navbar-nav li a {
   color: #d2cbcb;
   margin-top: 0;
 }
 
-.navbar-default .navbar-nav li.active a {
+.navbar-lp .navbar-nav li.active a {
   color: #00d7c6;
   background-color: transparent;
   margin-left: 20px;
 }
 
-.navbar-default .navbar-nav li a:hover,
-.navbar-default .navbar-nav li.active a:hover {
+.navbar-lp .navbar-nav li a:hover,
+.navbar-lp .navbar-nav li.active a:hover {
   color: #00d7c6;
   background-color: transparent;
 }
-/********************************导航的样式***********************************/
-/********************************搜索框的样式***********************************/
+/********************************前台导航样式-end***********************************/
+/********************************搜索框的样式-start***********************************/
 #lp_search {
   // border: 1px solid red;
   height: 120px;
   width: 100%;
-  background-image: url("bg1.png");
+  background-image: url("bg4.png");
   background: cover;
 }
 
@@ -82,4 +229,73 @@
   text-decoration: none;
   color: #02c4d4;
 }
-/********************************搜索框的样式***********************************/
+/********************************搜索框样式-end***********************************/
+/********************************后台导航样式-start***********************************/
+#admin_navbar {
+  padding: 0;
+  height: 64px;
+}
+
+#admin_navbar ul.navbar-right {
+  height: 64px;
+}
+
+#admin_navbar ul.navbar-right li a.dropdown-toggle {
+  padding: 0 22px;
+  line-height: 64px;
+  margin-top: 0;
+}
+/********************************后台导航样式-end***********************************/
+/********************************后台侧边栏导航样式-start***********************************/
+#admin_side_bar {
+  padding: 0;
+  background: url("xq.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#admin_side_bar .overlay {
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+}
+
+#admin_side_bar .side-bar-head {
+  height: 64px;
+  background-color: #000000;
+}
+
+#admin_side_bar .side-bar-head h3 {
+  line-height: 64px;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+}
+
+#admin_side_bar .side-bar-main {
+  height: 902px;
+  color: #fff;
+}
+
+#admin_side_bar ul {
+  max-width: 300px;
+  padding-top: 120px;
+}
+
+.nav-pills li a {
+  border-radius: 0;
+  padding: 10px 0;
+  margin: 0;
+  font-size: 15px;
+  color: #aaa;
+}
+
+#admin_side_bar .side-bar-main li.active a {
+  background-color: #121a2a;
+  color: #fff;
+}
+
+#admin_side_bar .side-bar-main li a:hover {
+  background-color: #121a2a;
+  color: #fff;
+}
+/********************************后台侧边栏导航样式-end***********************************/
