@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   before_action :validate_search_key, only: [:search]
 
   def index
-    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 5)
+    @jobs = Job.where(is_hidden: false).paginate(page: params[:page], per_page: 8)
   end
 
   # 搜索职位

@@ -4,6 +4,7 @@ class Admin::JobsController < ApplicationController
   layout 'admin'
 
   def index
+    @user = current_user
     @jobs = Job.all.paginate(page: params[:page], per_page: 15)
   end
 
@@ -64,7 +65,6 @@ class Admin::JobsController < ApplicationController
     @job.update(is_hidden: true)
     redirect_to admin_jobs_path
   end
-
 
   private
   def job_params

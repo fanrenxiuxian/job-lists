@@ -1,21 +1,25 @@
-<div class="col-md-12">
-  <br>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>工作</th>
-        <th>投递时间</th>
-      </tr>
-    </thead>
+<div class="container">
+  <div class="row">
+    <br>
+    <div id="sended_resumes">
+      <h4 class="table-head">我投递的简历列表：</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>工作</th>
+            <th>投递时间</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @resumes.each do |resume| %>
-        <tr>
-          <td><%= resume.job.title %></td>
-          <td><%= resume.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+          <% @resumes.each do |resume| %>
+            <tr>
+              <td><%= resume.job.title %></td>
+              <td><%= resume.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-

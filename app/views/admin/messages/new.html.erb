@@ -1,13 +1,15 @@
-<h4>向<span style="color: blue"><%= @resume.user.email %></span>发送信息</h4>
-
-<%= simple_form_for [:admin, @message] do |f| %>
-  <%= f.hidden_field :job_id, value: @job.id %>
-  <%= f.hidden_field :sender_id, value: current_user.id %>
-  <%= f.hidden_field :receiver_id, value: @resume.user.id %>
-  <%= f.text_area :content, label: "内容" %><br>
-  <%= f.submit "发送" %>
-<% end %>
-
-
-
-
+<div class="container col-md-10">
+  <div class="row">
+    <h4>
+      向<span><%= @resume.user.name %></span>发送信息
+    </h4>
+    <hr>
+    <%= simple_form_for [:admin, @message] do |f| %>
+    <%= f.hidden_field :job_id, value: @job.id %>
+    <%= f.hidden_field :sender_id, value: current_user.id %>
+    <%= f.hidden_field :receiver_id, value: @resume.user.id %>
+    <%= f.input :content, label:"请填写内容：", required: true %>
+    <%= f.submit "发送", class:"btn btn-sm btn-count" %>
+  <% end %>
+</div>
+</div>

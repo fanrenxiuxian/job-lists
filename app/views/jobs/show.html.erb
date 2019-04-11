@@ -1,21 +1,31 @@
-<div class="col-md-12">
-  <%= link_to "投简历", new_job_resume_path(@job), class:"btn btn-primary pull-right" %>
-
-  <h3> <%= @job.title %> </h3>
-  <br>
-  <p>
-  <b>工作内容：</b>
-  <%= simple_format(@job.description) %>
-  <br>
-  <b>学历要求：</b>
-  <%= simple_format(@job.educational_background) %>
-  <br>
-  <b>工作经验要求：</b>
-  <%= simple_format(@job.work_experience) %>
-  <br>
-  <b> 工资：</b>
-  <%= @job.wage_lower_bound %>-<%= @job.wage_upper_bound %>
-  <br>
-  <b>联系邮箱：</b><%= @job.contact_email %>
-  </p>
+<div class="container">
+  <div id="job_show" class="row">
+    <section class="content">
+      <div class="content-left">
+        <h3>
+          <%= @job.title %>
+        </h3>
+        <br>
+        <p>
+          <b>工作内容：</b>
+          <%= simple_format(@job.description) %>
+          <br>
+          <b>学历要求：</b>
+          <%= simple_format(@job.educational_background) %>
+          <br>
+          <b>工作经验要求：</b>
+          <%= simple_format(@job.work_experience) %>
+          <br>
+          <b>
+            工资：</b>
+          <%= @job.wage_lower_bound %>-<%= @job.wage_upper_bound %>
+          <br>
+          <b>联系邮箱：</b><%= @job.contact_email %>
+        </p>
+      </div>
+      <div class="content-right">
+        <%= link_to "去投简历", new_job_resume_path(@job), class:"btn btn-lg btn-count" %>
+      </div>
+    </section>
+  </div>
 </div>

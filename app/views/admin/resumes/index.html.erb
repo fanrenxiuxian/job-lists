@@ -1,6 +1,9 @@
-<h3><%= @job.title %>收到的简历</h3>
-<%= render  partial: "resumes", collection: @resumes, as: :resume  %>
-<div class="text-center">
-  <%= will_paginate @jobs %>
+<div class="container col-md-10">
+  <div id="job_resumes" class="row">
+    <h3><%= @job.title %>收到的简历</h3>
+    <%= render partial: "resumes", collection: @resumes, as: :resume %>
+    <div class="text-center">
+      <%= will_paginate @jobs %>
+    </div>
+  </div>
 </div>
-

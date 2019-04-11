@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/**********************************表格样式-start******************************/
+/****************************发布的工作列表样式-start******************************/
 .admin-panel .admin-panel-heading {
   background-color: #39ADB4;
   color: white;
@@ -12,11 +12,22 @@
   border-top-right-radius: 10px;
 }
 
+.admin-panel .admin-panel-heading h4 {
+  padding-left: 30px;
+}
+
+.admin-panel table.table-hover {
+  border: 1px solid rgba(79, 173, 180, .5);
+  border-top: none;
+}
+
 .admin-panel table.table-hover thead th {
   text-align: center;
+  border-bottom-color: rgba(79, 173, 180, .3);
 }
+
 .admin-panel table.table-hover thead th,
-table.table-hover thead th tr {
+.admin-panel table.table-hover thead th tr {
   height: 65px;
 }
 
@@ -25,11 +36,12 @@ table.table-hover thead th tr {
 }
 
 .admin-panel table.table-hover > tbody > tr > td {
-    line-height: 45px;
+  line-height: 45px;
+  border-color: rgba(79, 173, 180, .3);
 }
 
 .admin-panel table.table-hover > tbody > tr:hover {
-    background-color: #e3f3f3;
+  background-color: #e3f3f3;
 }
 
 .admin-panel table.table-hover tbody td.change_status a {
@@ -44,4 +56,109 @@ table.table-hover thead th tr {
   color: #fff;
 }
 
-/**********************************表格样式-end******************************/
+/****************************发布的工作列表样式-start******************************/
+/********************************admin_jobs#new*********************************/
+#job_new .row {
+  width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#job_new h4 {
+  height: 60px;
+  margin: 0;
+  line-height: 60px;
+  padding-left: 36px;
+  background-color: #f5f5f5;
+  color: rgba(0,0,0,.54);
+  border-bottom: 1px solid #777;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+#job_new form {
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+#job_new .form-control:focus {
+  border-color: #212121;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#job_new input.radio_buttons {
+  margin: 4px 6px;
+}
+
+/********************************admin_jobs#new*********************************/
+/********************************admin_jobs#edit*********************************/
+#job_edit .row {
+  width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 1px solid rgba(135,72,30,.5);
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),
+              0 2px 2px 0 rgba(0,0,0,.14),
+              0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#job_edit h4 {
+  height: 60px;
+  margin: 0;
+  line-height: 60px;
+  padding-left: 36px;
+  background-color: #f5f5f5;
+  color: rgba(0,0,0,.54);
+  border-bottom: 1px solid #777;
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+#job_edit form {
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+#job_edit .form-control:focus {
+  border-color: #87481f;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#job_edit input.radio_buttons {
+  margin: 4px 6px;
+}
+/********************************admin_jobs#edit*********************************/
+/********************************admin_jobs#show*********************************/
+
+div#admin_job_show {
+  height: 700px;
+  margin: 44px auto;
+  background-color: #fff;
+  box-shadow: 0 4px 5px -2px rgba(0,0,0,.2), 0 7px 10px 1px rgba(0,0,0,.14), 0 2px 16px 1px rgba(0,0,0,.12);
+}
+
+div#admin_job_show .content-left {
+  float: left;
+  text-align: center;
+  border-right: 1px solid rgba(0,0,0,.3);
+}
+
+div#admin_job_show .content-left h3 {
+  margin-top: 40px;
+}
+
+div#admin_job_show .content-right {
+  float: right;
+  height: 406px;
+  text-align: center;
+}
+
+div#admin_job_show .content-right a {
+  margin-top: 150px;
+  margin-right: 200px;
+}
+/********************************admin_jobs#show*********************************/

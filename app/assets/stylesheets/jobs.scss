@@ -1,7 +1,97 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/********************************前台工作选项卡-start****************************/
+#tab_bar {
+  margin-top: 30px;
+  margin-bottom: 102px;
+}
 
+#tab_bar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#tab_bar .job-menu-list ul.list {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  line-height: 44px;
+  margin-bottom: 0;
+  padding-bottom: 1px;
+  padding-left: 0;
+  color: #888;
+}
+
+#tab_bar .job-menu-list b {
+  font-size: 15px;
+  color: #333;
+}
+
+#tab_bar .job-menu-list ul.list:hover {
+  background-color: #61cab0;
+  color: #fff;
+}
+
+#tab_bar .job-menu-list .menu-sub {
+  position: absolute;
+  margin-left: 360px;
+  width: 700px;
+  height: auto;
+  margin-top: -45px;
+  background-color: #fff;
+  border: 1px solid #f5f5f5;
+  z-index: 100;
+}
+
+#tab_bar .job-menu-list .menu-sub p {
+  font-size: 16px;
+  padding: 25px 0 0 40px;
+  margin: 0;
+  color: #61687c;
+}
+
+#tab_bar .menu-sub ul {
+  list-style: none;
+}
+
+#tab_bar .menu-sub h4 {
+  float: left;
+  width: 104px;
+  color: #8d92a1;
+  font-size: 13px;
+  font-weight: 400;
+  padding-top: 18px;
+  margin: 0;
+}
+
+#tab_bar .menu-sub .text {
+  margin-left: 130px;
+  margin-right: 50px;
+  border-bottom: solid 1px #f5f6f9;
+  padding: 12px 0 10px;
+}
+
+#tab_bar .menu-sub .text a {
+  margin: 0 25px 0 0;
+  font-size: 13px;
+  line-height: 28px;
+  color: #61687c;
+}
+
+#tab_bar .menu-sub .text a:hover {
+  color: #65d5c8;
+}
+/********************************前台工作选项卡-end****************************/
+/********************************前台工作轮播图-start****************************/
+#slider {
+  width: 780px;
+  position: relative;
+}
+/********************************前台工作轮播图-end****************************/
+/********************************前台工作列表-start****************************/
 .panel .panel-heading {
   background-color: #61cab0;
   color: white;
@@ -14,6 +104,7 @@
 .panel table thead tr {
   height: 64px;
 }
+
 .panel table thead tr th {
   text-align: center;
 }
@@ -29,3 +120,104 @@
 .panel table tbody tr td .btn {
   margin-top: 0;
 }
+/********************************前台工作列表-end******************************/
+/********************************jobs#show*********************************/
+div#job_show {
+  width: 1020px;
+  height: 700px;
+  margin: 64px auto;
+  background-color: #fff;
+  box-shadow: 0 4px 5px -2px rgba(0,0,0,.2), 0 7px 10px 1px rgba(0,0,0,.14), 0 2px 16px 1px rgba(0,0,0,.12);
+}
+
+div#job_show .content-left {
+  width: 520px;
+  float: left;
+  text-align: center;
+}
+
+div#job_show .content-left h3 {
+  margin-top: 40px;
+}
+
+div#job_show .content-right {
+  width: 500px;
+  float: right;
+  height: 406px;
+  text-align: center;
+}
+
+div#job_show .content-right a {
+  margin-top: 150px;
+}
+/********************************jobs#show-end*********************************/
+/********************************收藏职位界面样式*********************************/
+#collection_job {
+  height: 600px;
+  margin-top: 40px auto;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#collection_job h4.table-head {
+  margin: 0;
+  border-bottom: 1px solid #777;
+  line-height: 60px;
+  padding-left: 36px;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+  color: rgba(0,0,0,.54);
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+#collection_job table.table-hover {
+  background-color: #fff;
+  text-align: center;
+  margin: 15px auto 0;
+}
+
+#collection_job table thead tr {
+  height: 40px;
+}
+
+#collection_job table thead tr th {
+  text-align: center;
+}
+/********************************收藏职位界面样式-end*********************************/
+/********************************点赞职位界面样式*********************************/
+#clap_job {
+  height: 600px;
+  margin-top: 40px auto;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+#clap_job h4.table-head {
+  margin: 0;
+  border-bottom: 1px solid #777;
+  line-height: 60px;
+  padding-left: 36px;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+  color: rgba(0,0,0,.54);
+  border-bottom-color: rgba(0,0,0,.12);
+}
+
+#clap_job table.table-hover {
+  background-color: #fff;
+  text-align: center;
+  margin: 15px auto 0;
+}
+
+#clap_job table thead tr {
+  height: 40px;
+}
+
+#clap_job table thead tr th {
+  text-align: center;
+}
+/********************************点赞职位界面样式-end*********************************/
